@@ -8,6 +8,7 @@
 #include <net/ethernet.h>
 #include <linux/in.h>
 #include <unistd.h>
+#include <iostream>
 #include "mac.h"
 
 struct Radiotap_header { //24
@@ -34,8 +35,20 @@ struct Wireless{
     u_int16_t reason_code;
 };
 
+struct Wireless_auth{
+    u_int16_t algo;
+    u_int16_t sequence_number;
+    u_int16_t status;
+};
+
 struct Deauth{
     Radiotap_header radiotap;
     Deauthentication deauthentication;
     Wireless wireless;
+};
+
+struct Auth{
+    Radiotap_header radiotap;
+    Deauthentication deauthentication;
+    Wireless_auth wireless;
 };
