@@ -12,7 +12,7 @@ int Deauth_packet_make(struct Deauth* deauth, char* ap_mac, char* station_mac) {
     deauth->radiotap.pad =0;
     deauth->radiotap.length = 8;
     deauth->radiotap.Present_flags = 0x00000000;
-    deauth->deauthentication.type = htons(0xa000);
+    deauth->deauthentication.type = htons(0xc000);
     if (station_mac == NULL) deauth->deauthentication.dst_addr = Mac("ff:ff:ff:ff:ff:ff");
     else deauth->deauthentication.dst_addr = Mac(station_mac);
     deauth->deauthentication.src_addr = Mac(ap_mac);
